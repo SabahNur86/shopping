@@ -1,0 +1,36 @@
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Odeme Ekrani</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="input1" class="form-label">Kart Sahibi Ad Soyad</label>
+          <input type="text" class="form-control" id="input1" >
+        </div>
+        <div class="mb-3">
+          <label for="input2" class="form-label">Kart No</label>
+          <input type="text" class="form-control" id="input2" >
+        </div>
+        <div class="mb-3">
+          <label for="input3" class="form-label">Son Kullanma Tarihi</label>
+          <input type="text" class="form-control" id="input3" >
+        </div>
+        <div class="mb-3">
+          <label for="input4" class="form-label">CCV</label>
+          <input type="text" class="form-control" id="input4" >
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Toplam Odenecek Tutar</label>
+          <h3 class="text-danger">{{total | currency : 'TRY':'symbol-narrow':'1.2-2'}}</h3>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="paymentModalCloseBtn">Kapat</button>
+        <button type="button" class="btn btn-success" (click)="payment()">Ödeme yap</button>
+      </div>
+    </div>
+  </div>
+</div>

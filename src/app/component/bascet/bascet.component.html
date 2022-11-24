@@ -1,0 +1,38 @@
+<h3 class="text-center text-success">Sepetiniz</h3>
+<hr>
+<table class="table">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Urun Adi</th>
+    <th>Urun Miktari</th>
+    <th>Tutar</th>
+    <th>Islemler</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let basket of baskets let index = index">
+    <td>{{index+1}}</td>
+    <td>{{basket.product.name}}</td>
+    <td><input type="number" id="basketQuantity-{{basket.product.name}}" min="1" class="form-control" [value]="basket.quantity" (click)="changeData(basket)" ></td>
+    <td>{{basket.quantity*basket.product.price | currency : 'TRY':'symbol-narrow':'1.2-2'}}</td>
+    <td>
+      <button class="btn btn-sm btn-danger" (click)="deleteBasket(basket)">Sil</button>
+    </td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <th></th>
+  <th></th>
+  <th>Toplam : </th>
+  <th [innerText]="hesapla() | currency : 'TRY':'symbol-narrow':'1.2-2'"></th>
+  <th>
+
+  </th>
+  </tfoot>
+</table>
+<div class="form-group text-center">
+<button class="btn btn-md btn-success " data-bs-toggle="modal" data-bs-target="#paymentModal" >Odeme Yap</button>
+<div class="form-group">
+<app-payment [total]="total" (myEvent)="payment($event)"></app-payment>
+</div></div>
