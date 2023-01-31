@@ -1,5 +1,8 @@
 export class ProductModel{
-  name:string;
-  price:number;
-  imageUrl:string;
+  id:number
+  name:string
+  inventoryQuantity:number
+  price:number
+  imageUrl:string
+  codeGuid:string
 }

@@ -1,21 +1,29 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterContentChecked, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {BasketService} from "../../service/basket.service";
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   //styleUrls: ['./payment.component.scss']
 })
-export class PaymentComponent implements OnInit {
+export class PaymentComponent implements OnInit,AfterContentChecked {
 
-  @Input() total:number=0;
+  total:number=0;
   @Output() myEvent:EventEmitter<any>= new EventEmitter()
-  constructor() { }
+  constructor(
+    private basketService:BasketService
+  ) { }
 
   ngOnInit(): void {
   }
-payment(){
-    this.myEvent.emit({total:this.total});
-    document.getElementById("paymentModalCloseBtn").click();
 
-}
+  ngAfterContentChecked() {
+    this.total=this.basketService.total;
+  }
+
+   payment(){
+  //   this.basketService.payment(this.total)
+  //   document.getElementById("paymentModalCloseBtn").click();
+   }
+
 }

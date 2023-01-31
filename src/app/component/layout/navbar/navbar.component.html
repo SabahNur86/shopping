@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Alis-Veris</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Anasayfa</a>
+        </li>
+        <li class="nav-item" *ngIf="auth">
+          <a class="nav-link" *ngIf="auth" routerLink="/product-add">Urun Ekle</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <ul style="list-style-type: none ;padding: 0 ">
+              <li *ngIf="!auth" class="text-danger"> <strong>Ödenecek Tutar :</strong>
+                {{ total | currency: 'TRY':'symbol-narrow':'1.2-2'}}
+              </li>
+            </ul>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="!auth"  routerLink="/orders">Siparisler</a>
+        </li>
+      </ul>
+      <form class="d-flex ">
+        <button *ngIf="!auth" class="btn btn-outline-primary mx-3" routerLink="/login">
+          <i class="fa-solid fa-house"></i>
+          Giris
+        </button>
+      </form>
+      <form class="d-flex ms-3">
+        <button *ngIf="auth" class="btn btn-outline-danger" (click)="logout()">
+          <i class="fa-solid fa-person-walking-arrow-right"></i>
+          Cikis
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
