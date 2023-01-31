@@ -1,7 +1,7 @@
 import {AfterContentChecked, Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {ProductService} from "../../../service/product.service";
 import {ProductModel} from "../../model/product";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../service/auth.service";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
@@ -13,11 +13,11 @@ import {Router} from "@angular/router";
 export class ProductAddComponent implements OnInit{
 
   img:string="";
-  addForm:FormGroup
+  addForm:UntypedFormGroup
 
   constructor(
     private productService:ProductService,
-    private formBuilder:FormBuilder,
+    private formBuilder:UntypedFormBuilder,
     private authSevice:AuthService,
     private toastr:ToastrService,
     private router:Router

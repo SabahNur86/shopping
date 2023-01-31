@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../../service/product.service";
 import {ProductModel} from "../../model/product";
@@ -13,10 +13,10 @@ import {ToastrService} from "ngx-toastr";
 export class ProductUpdateComponent implements OnInit {
 
   img:string="";
-  updateForm:FormGroup
+  updateForm:UntypedFormGroup
   products:ProductModel;
   constructor(
-    private formBuilder:FormBuilder,
+    private formBuilder:UntypedFormBuilder,
     private activateRoute:ActivatedRoute,
     private productService:ProductService,
     private router:Router,
