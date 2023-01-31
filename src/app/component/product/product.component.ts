@@ -1,10 +1,11 @@
-import {AfterContentChecked, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AfterContentChecked, Component, OnInit,} from '@angular/core';
 import {ProductModel} from "../model/product";
 import {BasketModel} from "../model/basket";
 import {ToastrService} from "ngx-toastr";
 import {ProductService} from "../../service/product.service";
 import {BasketService} from "../../service/basket.service";
 import {AuthService} from "../../service/auth.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 
 @Component({
@@ -22,12 +23,12 @@ export class ProductComponent implements OnInit, AfterContentChecked {
     private productService: ProductService,
     private basketService: BasketService,
     private authService: AuthService,
-
+    private spinner:NgxSpinnerService,
   ) {
   }
 
   ngOnInit(): void {
-    this.getList()
+    this.getList();
   }
 
   ngAfterContentChecked() {
@@ -53,9 +54,12 @@ export class ProductComponent implements OnInit, AfterContentChecked {
    }
 
   getList(){
+    this.spinner.show();
     this.productService.getList().subscribe((res)=>{
+      this.spinner.hide();
       this.products=res.data;
     },(err)=>{
+      this.spinner.hide();
       if(err.status=="404"){
         this.toastrService.error(err.statusText)
       }else{

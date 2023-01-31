@@ -20,6 +20,7 @@ import {ProductUpdateComponent} from './component/product/product-update/product
 import {FilterProductPipe} from './pipe/filter-product.pipe';
 import {HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './component/login/login.component';
+import {NgxSpinnerModule} from "ngx-spinner";
 
 
 @NgModule({
@@ -45,7 +46,7 @@ import { LoginComponent } from './component/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+    NgxSpinnerModule,
     ToastrModule.forRoot(
       {
         closeButton: true,
